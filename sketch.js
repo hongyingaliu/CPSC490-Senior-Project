@@ -30,7 +30,7 @@ function setup() {
   var ampm;
   ampm = whichM(illusHour);
 
-  if (minute().length > 1) {
+  if (minute() > 9) {
     aMinute = minute();
   } else {
     aMinute = "0" + minute();
@@ -360,7 +360,6 @@ function drawSun(h, scale, colorH, colorS, colorL, seed) {
   /*fill(317, 100, 50);
   noStroke();
   ellipse(200, sunheight, 100);*/
-  print(illusHour)
   if (illusHour < 19) {
     drawBlurryCircle(200, sunheight, scale, colorH, colorS, colorL, seed)
   } else if (illusHour == 19 && aMinute < 32 ) {
