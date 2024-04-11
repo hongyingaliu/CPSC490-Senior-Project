@@ -7,6 +7,7 @@ var illusHour;
 var illusDay;
 var illusMonth;
 var illusYear;
+var aMinute;
 var currentMinute;
  
 function setup() {
@@ -28,8 +29,6 @@ function setup() {
   //figure out the am pm
   var ampm;
   ampm = whichM(illusHour);
-
-  var aMinute;
 
   if (minute().length > 1) {
     aMinute = minute();
@@ -82,9 +81,9 @@ function draw() {
   mount2.color = [random(0, 360), random(20, 80), random(20, 30), seed];
   mount2.drawRange(380, 400);
 
-  // bgTex = new Stipple(3, 4, 1.0, seed);
-  // bgTex.color = [random(0, 360), random(20, 80), random(20, 80), seed];
-  // bgTex.drawRectangle(width, height);
+  bgTex = new Stipple(3, 4, 1.2, seed);
+  bgTex.color = [random(0, 360), random(20, 80), random(20, 80), seed];
+  bgTex.drawRectangle(width, height);
 
   // const characterOrder = [];
 
@@ -361,7 +360,12 @@ function drawSun(h, scale, colorH, colorS, colorL, seed) {
   /*fill(317, 100, 50);
   noStroke();
   ellipse(200, sunheight, 100);*/
-  drawBlurryCircle(200, sunheight, scale, colorH, colorS, colorL, seed)
+  print(illusHour)
+  if (illusHour < 19) {
+    drawBlurryCircle(200, sunheight, scale, colorH, colorS, colorL, seed)
+  } else if (illusHour == 19 && aMinute < 32 ) {
+    drawBlurryCircle(200, sunheight, scale, colorH, colorS, colorL, seed)
+  }
 }
 
 function drawBlurryCircle(x, y, w, colorH, colorS, colorL, seed) {
